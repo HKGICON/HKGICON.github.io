@@ -1,0 +1,63 @@
+<html>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="http://cdn.jsdelivr.net/g/filesaver.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dom-to-image/2.6.0/dom-to-image.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $('#btn-convert').on('click', () => {
+                var imgContent = $('#baby-content');
+                var inputText = $('#img-content').val();
+                imgContent.prop("innerHTML", inputText);
+                domtoimage.toBlob($('#baby-img')[0])
+                    .then(function (blob) {
+                        window.saveAs(blob, 'baby.png');
+                    });
+            });
+        });
+    </script>
+</head>
+
+<body style="font-family:'Roboto Condensed', 微軟正黑體">
+    <div style="display:flex;flex-direction:column;width: 20vw;margin-bottom:10px;">
+        <textarea id='img-content'></textarea>
+        <button id="btn-convert" style="margin-top:10px;font-weight:bold;">Convert to .png</button>
+    </div>
+    <div style="border: 1px solid #ccc;border-radius: 4px;padding:8px;display:inline-block">
+        <div style="font-weight:bold;margin-bottom:6px;">Result:</div>
+        <div id="baby-img" style="display:inline-flex;align-items:center;background-color:transparent;">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAgAAAAnBAMAAADA2xRbAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAA9QTFRFAAAAhYWFAAAAvpTd27rz2soJMQAAAAV0Uk5TAPX///9zbcY2AAAALUlEQVR4nGNgIB0wCgoyMAgqKTEwChkbMzAqu7gACWdjWhEg40EWga2EWI4CAFyeDg+H84uVAAAAAElFTkSuQmCC" />
+            <div style="background-color: #be93da;
+            height: 24px;
+            margin-top: 6px;
+            border: 1px solid #888191;
+            border-left: none;
+            border-right: none;">
+                <div style="height: calc(100% - 2px);
+                border: 1px solid #080013;
+                border-right: none;
+                border-left: none;
+                display: flex;
+                align-items: center;">
+                    <div id="baby-content" style="height: calc(100% - 4px);
+                    border: 1px solid #dab8f4;
+                    border-right: none;
+                    border-left: none;
+                    font-size: 12px;
+                    font-weight: bold;
+                    display: flex;
+                    align-items: center;
+                    color: white;
+                    word-spacing: 4px;
+                    white-space: nowrap;
+                    padding: 0 3px;
+                    text-shadow: 2px 0 0 #20005a, -2px 0 0 #20005a, 0 2px 0 #20005a, 0 -2px 0 #20005a, 1px 1px #20005a, -1px -1px 0 #20005a, 1px -1px 0 #20005a, -1px 1px 0 #20005a;">
+                    </div>
+                </div>
+            </div>
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC8AAAAnCAMAAACoquHzAAAAAXNSR0IB2cksfwAAAAlwSFlzAAALEwAACxMBAJqcGAAAAnBQTFRFAAAAhYWFhYWFDQkIGREPBwUEAAAAHxUSnoQJuZwHPjAS/dgAgmwMEBAQ////Z1QOMSQUSklJ1LQEWkgQkHgLEBAQq5AIdWANaltTR0A61MCy/+fW8d3Nq5mOZmZmc3NzGBgYdGZd486/uKSZLyQg8c0ASklJICAgNzo3Pz8/PDEskH50Wk1I4sADPz8/x7SmvpTdNzo3ACg6MzMzXFtcg3Rq27rzeGyvICAgSDkP2rjyBwcHMispd2hhVUlCi4uLw5XfAAoN/evXtaKWKB4aIxsalJCPj4+QxJnhxprmpIjFmnK+G2F6//De9t/Pmop+MisphnAYmZmZlonLhXSkD1dpb2Rge3x8u6icnoyCqJaK7tHFp5eUi3txs4rUzqDvgGGWeG9slJCPdoWESjU3Kyckwa2h//jmDU5bDxQKg3VwYlhSaX9+CxwaD4Z7EB0b///138q75OLi1tbWalmBpKanACkjALShAKWTVFJTzMzMlm68MzMzi4uLADMsCop9AJeECKSR/d7U/9bS2sW2kHdkwJPdZk92NXNuAEU8AJ6Nj9jOZsezMTw6/8zMQDQuUEQ98cWd/8aI/9eolIN41qb3MWBbLLKjgdHFMrSgueXZ3vPu6qRi5phO/8CEFYR6reDWot3Nn722/+fc//XcqoxzXFtcRFdUeM299PL3yOnhZmZmj4+QjnJee3x84ODgjX2qG3pv2PLtreHRzMzMcca0TL6pFamXA1RP5+TtInJqvLm48vD1Hmtk5OLirIPNTXJvPSgSclQtgGM8pn3Ic3Nzfk8M8pYAtIM8y34E5Y4BuJx/mnM/tpJkp3s9xJ9wHRDHNwAAANB0Uk5TAPX////////////////////1////9f//////////9fX///////////X///////X/////9fX////1////9f//9f////////X1//////////////X/////////////////////////////////////////9fX////////1////////////////////////////////////////////////////////////////////9fX////////////1//9///////////////////////////HQJWkAAAQTSURBVHicjZWJXxtFFMezOztvgGVhW66ESThyQTmatRaURqDlaKWalrYWDRQhWImWgnggraKFpPVIFTyqPVRaxLPRerRa7/tsPf4l32wCqU2o/j6fzc5n85137Zu3FksmSXJKUkbi37hEFEWhskzxJv3nBklCGAgjMsvKziHX5CUhoohAKAOmqrnX5CWJUk3GUPLyZLyx/CydSgmtFInCKJpP8ETXCXrCbOiqjLxAKRGpimSpvrpAZK1nF7KiTA4kQgB5UR30w1ixWoD2SYmqMsjMK1RjzGq1lXJud2C6hRphTC/OZZpUVp62RapgRKl0upwON1pnOciz/GJPCVOot4rSasksoGU5e2kNdddYa0sdNrCxOhvar/eoqqpjElWKzkRpAarLq/Ey8bXUZuecl/o4dwCAO1sVymYaJpHjWc2QNwy4bp0B15chv566BS7kcPt4Aysw+RJGsAQFqkfwjY0G3GCYG6QbwZfEnUwk7IZiwWcVonL1phxF2N+wYR3yhv+mslWkOYlzAPHb0gBZHtOFWt+kECK1inhMbdy4SdP8zhTfhoL2DlaQ7UHVN3Vq0uYtliR/c9fWW27VaOUSzqvAHgj4tG3bazq69fwdO3JI686dZgmR7uraddtuf8/tFXcs87ylsj0IvTzQ1+vw2/bs6V/u0juNgV2Du0loqOcusKd4e//eu4fDuAg7gn2BwPAybwwM3nPvvqGR/aNj97WleB4eHw8nFuEA5/fTLQ88mLD/EDRPtOx/eGzywOgSysNXLbidHDy4+RHBPwpTj+19/NDkgemZ0ba2SDQa5a6R5GtwjQxzLBOuDh850uk1Q3riyamnnp6MTc8cfeZZe2QWFZmD5xL8HNh4JBLB1fMvvHgs0dHGS/Dy5PTxEydPvTLkiwo+6uopHTd1uLJdPIly/upr89Ykbwyy00fPLJyZyXu9w7QfDQRs3abmti2KB7P8jfn5N+lbSX4A3n4nb+HdEwtnq/qEOeye+ISp91ymgdlww/tWJX7ug+T7+lD76ONT58+fPH66M2BG67uQl1AzFwYWt1OAJG6+X/B+cvbTi7FY7LNOsxrLfC3HfBdrlfLy8tbPLUu8sdX/xcUZxGNjaypEy/m+TPL7RGtbFXFwv7KkeDwy04LeFJfj5Bh2RSiBX+jlzv4Ocu7Kc55oZ/g6NgYhOSTLcWDWYEPoG8Qn6oJ1CrlqtBmNjfAtOvgOJ1QoHveCo0OB7wF++BGE0gahOI8/oYOfkY97u0mLOLy//Grqtxp/2sgRwYMB4A0JWpNJsNRn+93EL11uSB/OYp6shakqQLpIzGEch/olE/+DO9O/Fsl5tV6CIvM/Mf6Dvst//vW3CyOroytN/1RiEnP4lpQhoPSd5Er9D16WV/48/gPO4AdyhbqdhgAAAABJRU5ErkJggg==" />
+        </div>
+    </div>
+</body>
+</html>
